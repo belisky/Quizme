@@ -1,0 +1,28 @@
+.card {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+     
+    border:1px solid black;
+    border-radius:5px;
+    padding:0 1em;
+    
+}
+.question {
+    text-align: center;
+}
+.options {
+    display:flex;
+    flex-direction:column;
+     margin:1em 0;
+     padding:0;
+     width:100%;  
+     
+ 
+}
+.option {
+    margin:0 auto;
+    padding:.5em 1em;
+    width:30%;
+}
