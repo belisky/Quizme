@@ -2,10 +2,14 @@
      font-size:1.1em;
     padding:0.5em 1.8em;
     font-weight: 400;
-    background-color:white;
+    
+     outline:none;
 }
 
-.button:active {
+.button:focus {
     background-color: blue;
     color:white;
+     
+    border-radius:5px;
+    outline :none;
 }
