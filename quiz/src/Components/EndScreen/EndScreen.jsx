@@ -3,18 +3,19 @@ import { QuizContext } from '../../Helpers/Contexts'
 import Button from '../Button/Button';
 
 const EndScreen = () => {
-    const {setScore,score,setQuizState}=useContext(QuizContext);
+    const {setScore,score,setQuizState,total}=useContext(QuizContext);
     const restart=()=>{
         setScore(0);
         setQuizState("menu");
     }
     return (
         <div className="endpage">
-            <div>
-                <h1> hello {score}</h1>
+            <div className="scores">
+                <h1>Your Score</h1>
+                <h2 className="score">{score}/{total}</h2>
             </div>
             <div>
-                 <Button label="restart" onClick={()=>restart}/>
+                 <Button label="restart" onClick={restart}/>
             </div>
             
         </div>

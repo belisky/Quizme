@@ -7,14 +7,26 @@ import axios from 'axios'
 
 const MainMenu = () => {
     const categoryEl = useRef();
-    
+    const amountEl=useRef();
     const [categories,setCategories]=useState([]);
-    const { setQuizState,setQuestions}=useContext(QuizContext);
-    const start=()=>{setQuizState("quiz")}
+    const { setQuizState,setQuestions,setTotal}=useContext(QuizContext);
+    //const start=()=>{setQuizState("quiz")}
     const handleSubmit=(e)=>{
         e.preventDefault()
+        setTotal(amountEl.current.value);
+        axios.get('https://opentdb.com/api.php',{
+            params:{
+                amount:amountEl.current.value,
+                category:categoryEl.current.value
+            }
+        })
+        .then(res => {
+            setQuestions(res.data.results); 
+            setQuizState("quiz");
+           
       
-    }
+    })
+}
 
     useEffect(()=>{
         axios.get('https://opentdb.com/api_category.php')
@@ -24,21 +36,16 @@ const MainMenu = () => {
         })
     },[])
 
-    useEffect (()=>{
-        axios.get('https://opentdb.com/api.php?amount=10')
-        .then(res => {
-            setQuestions(res.data.results);
-        })
-    })
+    
 
     
     return (
         <div className="Menu">
             <div>
-                <form className="forms" onSubmit={start}>
+                <form className="forms" onSubmit={handleSubmit}>
                     <div className="form--group">
-                        <label htmlFor="category">Categories</label>
-                        <select id="category" ref={categoryEl}>
+                        <label className="labels" htmlFor="category">Categories</label>
+                        <select className="inputs" id="category" ref={categoryEl}>
                             {
                                 categories.map(category=>{
                                     return <option value={category.id} key={category.id}>
@@ -48,12 +55,13 @@ const MainMenu = () => {
                         </select>
                     </div>
                     <div className="form--group">
-                        <label htmlFor="amount">Number of Questions</label>
-                        <input type="number" id="amount" min="1" step="1" defaultValue={10} ref={amountEl} />
+                        <label className="labels" htmlFor="amount">Number of Questions</label>
+                        <input className="inputs" type="number" id="amount" min="1" step="1" defaultValue={10} ref={amountEl} />
                     </div>
                 </form>
             </div>
-            <Button   label="Start"/>
+            <Button  onClick={handleSubmit}  label="Start"/>
+            
             
         </div>
     )

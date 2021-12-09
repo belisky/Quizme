@@ -3,32 +3,42 @@ import './QuestionCard.css'
 import { QuizContext } from '../../Helpers/Contexts';
 import Button from '../Button/Button'
 
-const QuestionCard = ({question}) => {
-    const {score,setScore}=useContext(QuizContext);
+const QuestionCard = ({question,number}) => {
+    const {score,setScore,total}=useContext(QuizContext);
 
     const [option,setOption]=useState("");
     const choose=(variable)=> {
         setOption(variable);
-        if(variable===question.answer){
+        if(variable===question.correct_answer){
             setScore(score+ 1);
-            console.log(score,option)
+            console.log(score,decodedAnswer);
         }
+        alert(decodedAnswer)
          
     }
+    const decodeString=(str)=> {
+        const textArea =document.createElement('textarea')
+        textArea.innerHTML=str
+        return textArea.value
+    }
+    const decodedQuestion=decodeString(question.question)
+    const decodedAnswer=decodeString(question.correct_answer);
+    let decodedOptions=[...question.incorrect_answers.map(a=>decodeString(a)),decodedAnswer]
+    decodedOptions=decodedOptions.sort(()=>Math.random()- .5)
      
     return (
         <div className="card">
             <div className="card__number">
-                <h1>#</h1>
+                <h1>{number+1}/{total}</h1>
             </div>
             <div className="question">
-                <h1>{question.question}</h1>
+                <h5>{decodedQuestion}</h5>
             </div>
             <div className="options">
-                <Button label={question.optionA} onClick={()=>choose(question.optionA)}/>
-                <Button label={question.optionB} onClick={()=>choose(question.optionB)}/>
-                <Button label={question.optionC} onClick={()=>choose(question.optionC)}/>
-                <Button label={question.optionD} onClick={()=>choose(question.optionD)}/>
+                <Button label={decodedOptions[0]} onClick={()=>choose(decodedOptions[0])}/>
+                <Button label={decodedOptions[1]} onClick={()=>choose(decodedOptions[1])}/>
+                <Button label={decodedOptions[2]} onClick={()=>choose(decodedOptions[2])}/>
+                <Button label={decodedOptions[3]} onClick={()=>choose(decodedOptions[3])}/>
                 
             </div>
             

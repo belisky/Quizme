@@ -4,14 +4,14 @@ import { QuizContext } from '../../Helpers/Contexts';
 import Button from '../Button/Button'
 
 const Quiz = () => {
-    const { setQuizState}=useContext(QuizContext);
+    const { setQuizState,questions}=useContext(QuizContext);
     const finish=()=>{setQuizState("endscreen")}
    
-    const [questions,setQuestions]=useState(QuestionsBank);
+    
     return (
         <div className="Quiz">
             {questions.map((question,index)=>{
-                return <QuestionCard question={question} key={index} />
+                return <QuestionCard question={question} key={index} number={index} />
             })}
         <Button onClick={finish} label="Finish"/>
          </div>
