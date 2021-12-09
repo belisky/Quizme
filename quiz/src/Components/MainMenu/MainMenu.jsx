@@ -10,7 +10,7 @@ const MainMenu = () => {
     const amountEl=useRef();
     const [categories,setCategories]=useState([]);
     const { setQuizState,setQuestions,setTotal}=useContext(QuizContext);
-    //const start=()=>{setQuizState("quiz")}
+    
     const handleSubmit=(e)=>{
         e.preventDefault()
         setTotal(amountEl.current.value);

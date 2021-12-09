@@ -1,4 +1,4 @@
-import React, {useState,useRef} from 'react'
+import React, {useState } from 'react'
  
 import {QuizContext } from './Helpers/Contexts';
 import { MainMenu,Quiz,EndScreen } from './Components';

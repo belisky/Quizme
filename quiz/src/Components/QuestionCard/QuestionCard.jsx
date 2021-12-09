@@ -1,14 +1,12 @@
-import React,{useState,useContext,useEffect} from 'react'
+import React,{ useContext } from 'react'
 import './QuestionCard.css'
 import { QuizContext } from '../../Helpers/Contexts';
 import Button from '../Button/Button'
 
 const QuestionCard = ({question,number}) => {
     const {score,setScore,total}=useContext(QuizContext);
-
-    const [option,setOption]=useState("");
-    const choose=(variable)=> {
-        setOption(variable);
+   const choose=(variable)=> {
+ 
         if(variable===question.correct_answer){
             setScore(score+ 1);
             console.log(score,decodedAnswer);

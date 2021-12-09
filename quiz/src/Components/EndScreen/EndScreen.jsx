@@ -1,6 +1,7 @@
 import React,{useContext} from 'react'
 import { QuizContext } from '../../Helpers/Contexts'
 import Button from '../Button/Button';
+import './EndScreen.css'
 
 const EndScreen = () => {
     const {setScore,score,setQuizState,total}=useContext(QuizContext);

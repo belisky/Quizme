@@ -1,7 +1,8 @@
-import React,{useState,useContext} from 'react'
+import React,{ useContext} from 'react'
 import QuestionCard from '../QuestionCard/QuestionCard'
 import { QuizContext } from '../../Helpers/Contexts';
-import Button from '../Button/Button'
+import Button from '../Button/Button';
+import './Quiz.css'
 
 const Quiz = () => {
     const { setQuizState,questions}=useContext(QuizContext);
@@ -18,23 +19,6 @@ const Quiz = () => {
     )
 }
   
-const QuestionsBank = [
-    {
-        question:"What is my name",
-        answer:"Nobel",
-        optionA:"Kwesi",
-        optionB:"Nobel",
-        optionC:"Amina",
-        optionD:"Kosi"
-    },
-    {
-        question:"which school did i attend?",
-        answer:"Knust",
-        optionA:"Legon",
-        optionB:"Knust",
-        optionC:"Winneba",
-        optionD:"Uenr"
-    }
-]
+ 
 
 export default Quiz
