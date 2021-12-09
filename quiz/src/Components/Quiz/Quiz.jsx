@@ -1,6 +1,7 @@
 import React,{useState,useContext} from 'react'
 import QuestionCard from '../QuestionCard/QuestionCard'
 import { QuizContext } from '../../Helpers/Contexts';
+import Button from '../Button/Button'
 
 const Quiz = () => {
     const { setQuizState}=useContext(QuizContext);
@@ -12,8 +13,8 @@ const Quiz = () => {
             {questions.map((question,index)=>{
                 return <QuestionCard question={question} key={index} />
             })}
-         <button onClick={finish}>Finish</button>
-        </div>
+        <Button onClick={finish} label="Finish"/>
+         </div>
     )
 }
   

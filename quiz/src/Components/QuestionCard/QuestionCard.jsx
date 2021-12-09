@@ -1,6 +1,7 @@
 import React,{useState,useContext,useEffect} from 'react'
 import './QuestionCard.css'
 import { QuizContext } from '../../Helpers/Contexts';
+import Button from '../Button/Button'
 
 const QuestionCard = ({question}) => {
     const {score,setScore}=useContext(QuizContext);
@@ -24,10 +25,11 @@ const QuestionCard = ({question}) => {
                 <h1>{question.question}</h1>
             </div>
             <div className="options">
-                <button onClick={()=>choose(question.optionA)} className="option">{question.optionA}</button>
-                <button onClick={()=>choose(question.optionB)} className="option">{question.optionB}</button>
-                <button onClick={()=>choose(question.optionC)} className="option">{question.optionC}</button>
-                <button onClick={()=>choose(question.optionD)} className="option">{question.optionD}</button>
+                <Button label={question.optionA} onClick={()=>choose(question.optionA)}/>
+                <Button label={question.optionB} onClick={()=>choose(question.optionB)}/>
+                <Button label={question.optionC} onClick={()=>choose(question.optionC)}/>
+                <Button label={question.optionD} onClick={()=>choose(question.optionD)}/>
+                
             </div>
             
         </div>

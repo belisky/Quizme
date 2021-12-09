@@ -1,5 +1,6 @@
 import React,{useContext} from 'react'
 import { QuizContext } from '../../Helpers/Contexts'
+import Button from '../Button/Button';
 
 const EndScreen = () => {
     const {setScore,score,setQuizState}=useContext(QuizContext);
@@ -13,7 +14,7 @@ const EndScreen = () => {
                 <h1> hello {score}</h1>
             </div>
             <div>
-                <button className={restart} onClick={restart}>Restart</button>
+                 <Button label="restart" onClick={()=>restart}/>
             </div>
             
         </div>
