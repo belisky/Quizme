@@ -6,16 +6,16 @@ import EndScreenLogic from './EndScreenLogic';
 const EndScreen = () => {
     const{close,
         details,
+        scoreEl,
         restart,
-        review,
-        score,
+        review,       
         total}=EndScreenLogic();
     
     return (
         <div className="endpage">
             <div className="scores">
                 <h1>Your Score</h1>
-                <h2 className="score">{score}/{total}</h2>
+                <h2 className="score">{scoreEl.current}/{total}</h2>
             </div>
             <div>
                 <Button label="Details" onClick={ details} />
