@@ -1,43 +1,9 @@
-import React,{useContext,useEffect,useRef,useState} from 'react'
-import { QuizContext } from '../../Helpers/Contexts';
+import React  from 'react'
 import './MainMenu.css';
 import Button from '../Button/Button'
-import axios from 'axios'
-
-
+import MainMenuLogic from './MainMenuLogic';
 const MainMenu = () => {
-    const categoryEl = useRef();
-    const amountEl=useRef();
-    const [categories,setCategories]=useState([]);
-    const { setQuizState,setQuestions,setTotal}=useContext(QuizContext);
-    
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-        setTotal(amountEl.current.value);
-        axios.get('https://opentdb.com/api.php',{
-            params:{
-                amount:amountEl.current.value,
-                category:categoryEl.current.value
-            }
-        })
-        .then(res => {
-            setQuestions(res.data.results); 
-            setQuizState("quiz");
-           
-      
-    })
-}
-
-    useEffect(()=>{
-        axios.get('https://opentdb.com/api_category.php')
-       
-        .then(res=> {
-            setCategories(res.data.trivia_categories)
-        })
-    },[])
-
-    
-
+    const {handleSubmit, categories,categoryEl,amountEl}=MainMenuLogic(); 
     
     return (
         <div className="Menu">
@@ -60,11 +26,8 @@ const MainMenu = () => {
                     </div>
                 </form>
             </div>
-            <Button  onClick={handleSubmit}  label="Start"/>
-            
-            
+            <Button  onClick={handleSubmit}  label="Start"/>                
         </div>
     )
 }
-
 export default MainMenu

@@ -4,10 +4,8 @@ import { QuizContext } from '../../Helpers/Contexts';
 import Button from '../Button/Button'
 import decodeString from '../../Helpers/decodeString'
 
-const QuestionCard = ({question,number,choice}) => {
-  
-   const { total }=useContext(QuizContext);
-     
+const QuestionCard = ({question,number,choice}) => {  
+   const { total }=useContext(QuizContext);     
    const choose=(variable,number)=> {   
        choice.splice(number,1,variable);       
     }    

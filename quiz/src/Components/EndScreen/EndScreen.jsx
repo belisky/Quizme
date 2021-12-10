@@ -1,44 +1,16 @@
-import React,{useContext,useState} from 'react'
-import { QuizContext } from '../../Helpers/Contexts'
+ 
 import Button from '../Button/Button';
 import './EndScreen.css'
+import EndScreenLogic from './EndScreenLogic';
 
 const EndScreen = () => {
-    let localscore=0;
-    const [review,setReview]=useState([])
-    const {setScore,score,setQuizState,total,setTotal,scheme,choices,setScheme,setChoices}=useContext(QuizContext);
-    const restart=()=>{
-        setScore(0);
-        setQuizState("menu");
-        setScheme([]);
-        setChoices([]);
-        setTotal(0);
-    }
-    const close=()=> {
-        document.getElementById("popup").style.display = "none";
-    }
-
+    const{close,
+        details,
+        restart,
+        review,
+        score,
+        total}=EndScreenLogic();
     
-    for(let i=0;i<total;i++){
-        if(scheme[i]===choices[i]){             
-            localscore+=1;            
-        } 
-       if(i===total-1){   
-    setScore(localscore)};
-     }
-     
-  
-  
-   
-    const details=()=>{
-        let detail=[]
-        
-        for(let i=0;i<total;i++){
-            detail.push(scheme[i]+'--'+choices[i])
-        }
-        document.getElementById("popup").style.display = "flex";
-         return setReview(detail)
-    }
     return (
         <div className="endpage">
             <div className="scores">
@@ -57,10 +29,8 @@ const EndScreen = () => {
                          return <p key={idx}>{review}</p>})
                      }
                 <button onClick={close}>close</button>
-            </div>
-            
+            </div>            
         </div>
     )
 }
-
 export default EndScreen
