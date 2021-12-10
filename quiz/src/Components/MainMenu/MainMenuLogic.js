@@ -9,10 +9,13 @@ const MainMenuLogic = () => {
     const { setQuizState,setQuestions,setTotal}=useContext(QuizContext);
 
     useEffect(()=>{
+        try {
         axios.get('https://opentdb.com/api_category.php')       
         .then(res=> {
             setCategories(res.data.trivia_categories)
-        })
+        })} catch(error){
+            console.log(error.message)
+        }
     },[]) 
 
     const handleSubmit=(e)=>{
