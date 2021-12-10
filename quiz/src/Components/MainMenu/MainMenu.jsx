@@ -42,7 +42,7 @@ const MainMenu = () => {
     return (
         <div className="Menu">
             <div>
-                <form className="forms" onSubmit={handleSubmit}>
+                <form className="forms"  >
                     <div className="form--group">
                         <label className="labels" htmlFor="category">Categories</label>
                         <select className="inputs" id="category" ref={categoryEl}>

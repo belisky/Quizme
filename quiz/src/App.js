@@ -8,6 +8,8 @@ function App() {
   const [quizState,setQuizState]=useState("menu");
   const [score,setScore]=useState(0);
   const [questions,setQuestions]=useState([]);
+  const [choices,setChoices]=useState([]);
+  const [scheme,setScheme]=useState([]);
   const [total,setTotal]=useState(0);
 
   return (
@@ -16,7 +18,7 @@ function App() {
         <h1 >Quizme</h1>
         <p>Take a quiz on our diverse set of topics currated just for you.</p>
       </div> 
-      <QuizContext.Provider value={{quizState,setQuizState,score,setScore,questions,setQuestions,setTotal,total}}>
+      <QuizContext.Provider value={{choices,setChoices,quizState,setQuizState,score,setScore,questions,setQuestions,setTotal,total,scheme,setScheme}}>
         <div className="container">
           {quizState==="menu" && <MainMenu/>}
           {quizState==="quiz" && <Quiz/>}
